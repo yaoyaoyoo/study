@@ -10,11 +10,9 @@ import org.springframework.context.annotation.ComponentScan;
  * @desc
  */
 @SpringBootApplication
-@ComponentScan(value = "com.yy.controller")
-public class App 
-{
-    public static void main( String[] args )
-    {
+@ComponentScan(value = "com.yy.controller") public class App {
+
+    public static void main(String[] args) {
         SpringApplication.run(App.class, args);
     }
 }
