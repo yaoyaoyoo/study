@@ -6,12 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="AlgorithmPratice" />
         <module name="springboot" />
+        <module name="review" />
+        <module name="AlgorithmPratice" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="AlgorithmPratice" target="1.7" />
+      <module name="review" target="1.7" />
       <module name="springboot" target="1.7" />
     </bytecodeTargetLevel>
   </component>

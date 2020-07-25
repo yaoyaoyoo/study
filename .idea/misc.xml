@@ -8,6 +8,7 @@
       <list>
         <option value="$PROJECT_DIR$/springboot/pom.xml" />
         <option value="$PROJECT_DIR$/AlgorithmPratice/pom.xml" />
+        <option value="$PROJECT_DIR$/review/pom.xml" />
       </list>
     </option>
   </component>
