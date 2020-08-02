@@ -10,10 +10,12 @@
         <module name="spring" />
         <module name="review" />
         <module name="AlgorithmPratice" />
+        <module name="rabbitmq-quickstart" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="AlgorithmPratice" target="1.7" />
+      <module name="rabbitmq-quickstart" target="1.7" />
       <module name="review" target="1.7" />
       <module name="spring" target="1.5" />
       <module name="springboot" target="1.7" />

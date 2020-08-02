@@ -13,6 +13,7 @@
         <option value="$PROJECT_DIR$/AlgorithmPratice/pom.xml" />
         <option value="$PROJECT_DIR$/review/pom.xml" />
         <option value="$PROJECT_DIR$/spring/pom.xml" />
+        <option value="$PROJECT_DIR$/rabbitmq-quickstart/pom.xml" />
       </list>
     </option>
   </component>
