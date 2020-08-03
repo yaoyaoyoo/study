@@ -33,16 +33,35 @@ public class RabbitConsumer {
         Channel channel = connection.createChannel();
 
         //交换机和队列可以在消费端或生产端进行声明，绑定。
-        String exchangeName = "exchange_yy";
         String queueName = "queue_yy";
+//        testBasic(channel, queueName);
+        testQos(channel, queueName);
+    }
+
+    private static void testBasic(final Channel channel, String queueName) throws IOException {
         DefaultConsumer consumer = new DefaultConsumer(channel) {
 
             @Override public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties,
                     byte[] body) throws IOException {
-                System.out.println("消费消息" + new String(body));
+                System.out.println("消费消息：--------");
+                System.out.println("consumerTag:" + consumerTag);
+                System.out.println("envelope:" + envelope);
+                System.out.println("properties:" + properties);
+                System.out.println("body:" + new String(body));
             }
         };
         boolean isAutoAck = true;
         channel.basicConsume(queueName, true, consumer);
+    }
+
+    /**
+     * 消费端限流
+     * Qos：服务质量
+     */
+    private static void testQos(final Channel channel, String queueName) throws IOException {
+        //QoS配置  消息大小  消息个数 全局配置or单个consumer
+        channel.basicQos(0, 1, false);
+        //取消自动ack
+        channel.basicConsume(queueName, false, new CustomConsumer(channel));
     }
 }
