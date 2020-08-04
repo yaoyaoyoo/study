@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/rabbitmq-quickstart/rabbitmq-quickstart.iml" filepath="$PROJECT_DIR$/rabbitmq-quickstart/rabbitmq-quickstart.iml" />
       <module fileurl="file://$PROJECT_DIR$/review/review.iml" filepath="$PROJECT_DIR$/review/review.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring/spring.iml" filepath="$PROJECT_DIR$/spring/spring.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-rabbitmq/spring-rabbitmq.iml" filepath="$PROJECT_DIR$/spring-rabbitmq/spring-rabbitmq.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot/springboot.iml" filepath="$PROJECT_DIR$/springboot/springboot.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/study.iml" filepath="$PROJECT_DIR$/.idea/study.iml" />
     </modules>

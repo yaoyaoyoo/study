@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--spring启动是时候要通过相应的xsd文件来检验xml文件，找不到相应的xsd文件的时候就会报错。-->
+<!--        xmlns:全名是xml namespace，也即是为当前的这个xml指定命名空间。-->
+
+<!--schemaLocation 两部分组成，前面部分就是命名空间的名字，后面是xsd（xmlschema）的地址,-->
+<!--        也是就表示把定义这个命名空间的schema文件给引用进来-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/rabbit
+       http://www.springframework.org/schema/rabbit/spring-rabbit-2.1.xsd">
+
+    <!--配置connection-factory，指定连接rabbit server参数 -->
+    <rabbit:connection-factory id = "connectionFactory" virtual-host="vm_yy" username="yy" password="yy"
+                               host="localhost" port="5672"/>
+
+    <!--通过指定下面的admin信息，当前producer中的exchange和queue会在rabbitmq服务器上自动生成 -->
+    <rabbit:admin id="connectAdmin" connection-factory="connectionFactory" />
+
+    <!--定义queue -->
+    <rabbit:queue name="spring_queue" durable="true" auto-delete="false" exclusive="false"
+                  declared-by="connectAdmin" />
+
+    <!--定义exchange，绑定队列  directExchange-->
+    <!--    <rabbit:fanout-exchange name=""-->
+    <rabbit:direct-exchange name="spring_exchange" durable="true" auto-delete="false"
+                            declared-by="connectAdmin">
+        <rabbit:bindings>
+            <rabbit:binding queue="spring_queue" key="spring"/>
+        </rabbit:bindings>
+    </rabbit:direct-exchange>
+
+    <!--定义rabbit template用于数据的接收和发送  设置消息默认发送到的交换机-->
+    <rabbit:template id="rabbitTemplate" connection-factory="connectionFactory" exchange="spring_exchange" />
+
+    <!--定义消费者 -->
+    <bean id="consumer" class="com.yy.spring.rabbit.consumer.RabbitConsumer" />
+
+    <!--queue listener 观察 监听模式 当有消息到达时会通知监听在对应的队列上的监听对象 -->
+    <rabbit:listener-container connection-factory="connectionFactory">
+        <rabbit:listener queues="spring_queue" ref="consumer" />
+    </rabbit:listener-container>
+
+    <bean id="producer" class="com.yy.spring.rabbit.producer.RabbitProducer" />
+
+</beans>
