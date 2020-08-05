@@ -15,6 +15,7 @@
         <option value="$PROJECT_DIR$/spring/pom.xml" />
         <option value="$PROJECT_DIR$/rabbitmq-quickstart/pom.xml" />
         <option value="$PROJECT_DIR$/spring-rabbitmq/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot-rabbit/pom.xml" />
       </list>
     </option>
   </component>
