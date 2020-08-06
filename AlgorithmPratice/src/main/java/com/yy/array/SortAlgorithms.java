@@ -12,9 +12,11 @@ import java.util.Arrays;
 public class SortAlgorithms {
 
     public static void main(String[] args) {
-        int[] array = new int[]{1,6,3,8,33,27,66,9,7,88};
-        selectionSort(array);
-        bubbleSort(array);
+        int[] array = new int[]{1,3,2};
+
+        //        int[] array = new int[]{1,6,3,8,33,27,66,9,7,88};
+//        selectionSort(array);
+//        bubbleSort(array);
         quickSort(array);
     }
 
@@ -119,6 +121,9 @@ public class SortAlgorithms {
                 }
                 //右边的数字小于或等于基本数，将右边的数放到左边 此时基准数所在的位置为右边比基准数temp不大的数
                 array[left] = array[right];
+                //不能在这里就移动指针，如果第一个元素就是最小值，left==right，
+                //后面再执行array[right] = array[left]会导致第一轮循环后数组未按预期进行分组;
+                //left++;
                 //此时右指针不动，当左边的数不大于基准数，左指针右移
                 while (left < right && array[left] <= temp) {
                     left++;
