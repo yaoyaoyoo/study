@@ -1,5 +1,7 @@
 package com.yy.breadthfirstsearch;
 
+import com.yy.common.TreeNode;
+
 import java.util.*;
 
 /**
@@ -112,6 +114,7 @@ public class LevelPrintBinaryTree {
                 }
             }
             if (!temp.isEmpty()) {
+                //如果要求从叶子节点遍历，直接list.add(0, temp)插入列表头部即可
                 result.add(temp);
             }
         }
